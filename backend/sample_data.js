@@ -28,7 +28,7 @@ const products = [
     ],
     scrumMasterName: "Park Gyuvin",
     startDate: "2023/07/14",
-    methodology: "WATERFALL",
+    methodology: "Waterfall",
     location: "github.com/bcgov/2",
   },
   {
@@ -67,7 +67,7 @@ const products = [
     ],
     scrumMasterName: "Eve Davis",
     startDate: "2023/09/19",
-    methodology: "WATERFALL",
+    methodology: "Waterfall",
     location: "github.com/bcgov/4"
   },
   {
@@ -98,7 +98,7 @@ const products = [
     ],
     scrumMasterName: "Sophia Hall",
     startDate: "2023/09/19",
-    methodology: "WATERFALL",
+    methodology: "Waterfall",
     location: "github.com/bcgov/6"
   },
   {
@@ -124,7 +124,7 @@ const products = [
     ],
     scrumMasterName: "Lucas Adams",
     startDate: "2023/09/19",
-    methodology: "WATERFALL",
+    methodology: "Waterfall",
     location: "github.com/bcgov/8"
   },
   {
@@ -150,7 +150,7 @@ const products = [
     ],
     scrumMasterName: "Olivia Adams",
     startDate: "2023/09/19",
-    methodology: "WATERFALL",
+    methodology: "Waterfall",
     location: "github.com/bcgov/10"
   },
   {
@@ -181,7 +181,7 @@ const products = [
     ],
     scrumMasterName: "Zoe Turner",
     startDate: "2023/09/19",
-    methodology: "WATERFALL",
+    methodology: "Waterfall",
     location: "github.com/bcgov/12"
   },
   {
@@ -206,7 +206,7 @@ const products = [
     ],
     scrumMasterName: "Sophia Lee",
     startDate: "2023/09/19",
-    methodology: "WATERFALL",
+    methodology: "Waterfall",
     location: "github.com/bcgov/14"
   },
   {
@@ -234,7 +234,7 @@ const products = [
     ],
     scrumMasterName: "William Turner",
     startDate: "2023/09/19",
-    methodology: "WATERFALL",
+    methodology: "Waterfall",
     location: "github.com/bcgov/16"
   },
   {
@@ -263,7 +263,7 @@ const products = [
     ],
     scrumMasterName: "Ella Hall",
     startDate: "2023/09/19",
-    methodology: "WATERFALL",
+    methodology: "Waterfall",
     location: "github.com/bcgov/18"
   },
   {
@@ -291,7 +291,7 @@ const products = [
     ],
     scrumMasterName: "Liam Turner",
     startDate: "2023/09/19",
-    methodology: "WATERFALL",
+    methodology: "Waterfall",
     location: "github.com/bcgov/20"
   },
   {
@@ -319,7 +319,7 @@ const products = [
     ],
     scrumMasterName: "Mia Adams",
     startDate: "2023/09/19",
-    methodology: "WATERFALL",
+    methodology: "Waterfall",
     location: "github.com/bcgov/22"
   },
   {
@@ -345,7 +345,7 @@ const products = [
     ],
     scrumMasterName: "Daniel Martinez",
     startDate: "2023/09/19",
-    methodology: "WATERFALL",
+    methodology: "Waterfall",
     location: "github.com/bcgov/24"
   },
   {
@@ -372,7 +372,7 @@ const products = [
     ],
     scrumMasterName: "Michael Davis",
     startDate: "2023/09/19",
-    methodology: "WATERFALL",
+    methodology: "Waterfall",
     location: "github.com/bcgov/26"
   },
   {
@@ -402,7 +402,7 @@ const products = [
     ],
     scrumMasterName: "Zoe Wilson",
     startDate: "2023/09/19",
-    methodology: "WATERFALL",
+    methodology: "Waterfall",
     location: "github.com/bcgov/28"
   },
   {
@@ -433,7 +433,7 @@ const products = [
     ],
     scrumMasterName: "John Davis",
     startDate: "2023/09/19",
-    methodology: "WATERFALL",
+    methodology: "Waterfall",
     location: "github.com/bcgov/30"
   },
   {
@@ -461,7 +461,7 @@ const products = [
     ],
     scrumMasterName: "Daniel Turner",
     startDate: "2023/09/19",
-    methodology: "WATERFALL",
+    methodology: "Waterfall",
     location: "github.com/bcgov/32"
   },
   {
@@ -488,7 +488,7 @@ const products = [
     ],
     scrumMasterName: "Olivia Wilson",
     startDate: "2023/09/19",
-    methodology: "WATERFALL",
+    methodology: "Waterfall",
     location: "github.com/bcgov/34"
   }
 ]
