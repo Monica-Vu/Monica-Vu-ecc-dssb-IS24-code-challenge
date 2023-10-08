@@ -12,14 +12,6 @@ function ProductModal({
   setFormData,
 }) {
 
-  const [productName, setProductName] = useState("");
-  const [productOwnerName, setProductOwnerName] = useState("");
-  const [developers, setDevelopersList] = useState("");
-  const [scrumMasterName, setScrumMasterName] = useState("");
-  const [startDate, setStartDate] = useState(new Date());
-  const [methodology, setMethodlogy] = useState("");
-  const [location, setLocation] = useState("");
-
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
@@ -77,7 +69,7 @@ function ProductModal({
                   developers: e.target.value,
                 }));
               }}
-              rows="5"
+              rows="2"
             ></textarea>
           </div>
           <div className="mb-3">
@@ -98,15 +90,58 @@ function ProductModal({
               required
             />
           </div>
+          <label htmlFor="startdate" className="form-label pl-2">
+            Select Start Date
+          </label>
           <DatePicker
             selected={formData["startDate"]}
-            onChange={(date) => setFormData((prevFormData) => ({
-                  ...prevFormData,
-                  startDate:date,
-                }))}
+            onChange={(date) =>
+              setFormData((prevFormData) => ({
+                ...prevFormData,
+                startDate: date,
+              }))
+            }
             dateFormat="yyyy/MM/dd"
-            className="form-control" 
+            className="form-control"
           />
+          <br />
+          <label htmlFor="methodology" className="form-label pr-2">
+            Select Agile Methodology
+          </label>
+          <select
+            className="form-select"
+            aria-label="Select Methodology"
+            value={formData["methodology"]}
+            onChange={(e) =>
+            {
+              setFormData((prevFormData) => ({
+                ...prevFormData,
+                methodology: e.target.value,
+              }))
+            }}
+          >
+           <option selected>Please select a methodology</option>
+            <option value="Agile">Agile</option>
+            <option value="Waterfall">Waterfall</option>
+          </select>
+          <div className="mb-3">
+            <label htmlFor="location" className="form-label">
+              Location
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="location"
+              value={formData["location"]}
+              onChange={(e) =>
+                setFormData((prevFormData) => ({
+                  ...prevFormData,
+                  location: e.target.value,
+                }))
+              }
+              required
+            />
+          </div>
         </form>
       </Modal.Body>
       <Modal.Footer>

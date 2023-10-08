@@ -30,13 +30,12 @@ function Parent() {
 
         if (key === "startDate") {
             formData[key] = formData[key].toISOString().split('T')[0].replaceAll("-", "/");
-            console.log("handleSubmit if-statement =>", formData[key])
         }
         
         formDataObject[key] = formData[key];
       }
 
-      console.log("formDataObject =>", formDataObject["productName"]);
+      console.log("formDataObject =>", JSON.stringify(formDataObject))
 
       fetch("http://localhost:3000/api/products", {
         method: "POST",
