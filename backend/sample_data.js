@@ -12,7 +12,7 @@ const products = [
     ],
     scrumMasterName: "Park Jihoo",
     startDate: "2023/09/19",
-    methodology: "AGILE",
+    methodology: "Agile",
     location: "github.com/bcgov/1",
   },
   {
@@ -38,7 +38,7 @@ const products = [
     developers: ["Park Gunwook", "Han Yujin"],
     scrumMasterName: "Park Gunwook",
     startDate: "2023/07/14",
-    methodology: "AGILE",
+    methodology: "Agile",
     location: "github.com/bcgov/1",
   },
   {
@@ -54,7 +54,7 @@ const products = [
     ],
     scrumMasterName: "Park Jihoo",
     startDate: "2023/09/19",
-    methodology: "AGILE",
+    methodology: "Agile",
     location: "github.com/bcgov/3"
   },
   {
@@ -82,7 +82,7 @@ const products = [
     ],
     scrumMasterName: "Isabella Allen",
     startDate: "2023/09/19",
-    methodology: "AGILE",
+    methodology: "Agile",
     location: "github.com/bcgov/5"
   },
   {
@@ -111,7 +111,7 @@ const products = [
     ],
     scrumMasterName: "William Taylor",
     startDate: "2023/09/19",
-    methodology: "AGILE",
+    methodology: "Agile",
     location: "github.com/bcgov/7"
   },
   {
@@ -136,7 +136,7 @@ const products = [
     ],
     scrumMasterName: "Ella Hall",
     startDate: "2023/09/19",
-    methodology: "AGILE",
+    methodology: "Agile",
     location: "github.com/bcgov/9"
   },
   {
@@ -166,7 +166,7 @@ const products = [
     ],
     scrumMasterName: "Olivia White",
     startDate: "2023/09/19",
-    methodology: "AGILE",
+    methodology: "Agile",
     location: "github.com/bcgov/11"
   },
   {
@@ -193,7 +193,7 @@ const products = [
     ],
     scrumMasterName: "John Turner",
     startDate: "2023/09/19",
-    methodology: "AGILE",
+    methodology: "Agile",
     location: "github.com/bcgov/13"
   },
   {
@@ -220,7 +220,7 @@ const products = [
     ],
     scrumMasterName: "Daniel Johnson",
     startDate: "2023/09/19",
-    methodology: "AGILE",
+    methodology: "Agile",
     location: "github.com/bcgov/15"
   },
   {
@@ -248,7 +248,7 @@ const products = [
     ],
     scrumMasterName: "Ava Martinez",
     startDate: "2023/09/19",
-    methodology: "AGILE",
+    methodology: "Agile",
     location: "github.com/bcgov/17"
   },
   {
@@ -277,7 +277,7 @@ const products = [
     ],
     scrumMasterName: "Ethan Wilson",
     startDate: "2023/09/19",
-    methodology: "AGILE",
+    methodology: "Agile",
     location: "github.com/bcgov/19"
   },
   {
@@ -305,7 +305,7 @@ const products = [
     ],
     scrumMasterName: "Noah Turner",
     startDate: "2023/09/19",
-    methodology: "AGILE",
+    methodology: "Agile",
     location: "github.com/bcgov/21"
   },
   {
@@ -332,7 +332,7 @@ const products = [
     ],
     scrumMasterName: "Henry Adams",
     startDate: "2023/09/19",
-    methodology: "AGILE",
+    methodology: "Agile",
     location: "github.com/bcgov/23"
   },
   {
@@ -358,7 +358,7 @@ const products = [
     ],
     scrumMasterName: "Mia White",
     startDate: "2023/09/19",
-    methodology: "AGILE",
+    methodology: "Agile",
     location: "github.com/bcgov/25"
   },
   {
@@ -386,7 +386,7 @@ const products = [
     ],
     scrumMasterName: "Olivia Smith",
     startDate: "2023/09/19",
-    methodology: "AGILE",
+    methodology: "Agile",
     location: "github.com/bcgov/27"
   },
   {
@@ -417,7 +417,7 @@ const products = [
     ],
     scrumMasterName: "Ethan Adams",
     startDate: "2023/09/19",
-    methodology: "AGILE",
+    methodology: "Agile",
     location: "github.com/bcgov/29"
   },
   {
@@ -447,7 +447,7 @@ const products = [
     ],
     scrumMasterName: "Lily Wilson",
     startDate: "2023/09/19",
-    methodology: "AGILE",
+    methodology: "Agile",
     location: "github.com/bcgov/31"
   },
   {
@@ -474,7 +474,7 @@ const products = [
     ],
     scrumMasterName: "Henry Adams",
     startDate: "2023/09/19",
-    methodology: "AGILE",
+    methodology: "Agile",
     location: "github.com/bcgov/33"
   },
   {
