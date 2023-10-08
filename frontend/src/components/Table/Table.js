@@ -1,8 +1,22 @@
 import React, { useState, useEffect } from "react";
 
-const Table = ({ data }) => {
+const Table = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch('http://localhost:3000/api/products')
+    .then((response) => response.json())
+    .then((responseData) => {
+      setData(responseData);
+    })
+    .catch((error) => {
+      console.error('Error fetching data', error);
+    })
+  }, []);
+
   return (
-    <table className="table table-bordered table-striped">
+    <div> 
+    {data? (<table className="table table-bordered table-striped">
       <thead>
         <tr>
           <th> Product Id </th>
@@ -29,7 +43,9 @@ const Table = ({ data }) => {
           </tr>
         ))}
       </tbody>
-    </table>
+      </table>
+      ) : (<p> No Data To Display </p>)}
+    </div>
   );
 };
 

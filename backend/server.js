@@ -1,11 +1,13 @@
 const express = require("express");
 const Joi = require("joi");
+const cors = require('cors');
 const products = require("./sample_data");
 const app = express();
 const port = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
 // TODO: validate startDate field
 const schema = Joi.object({
@@ -21,15 +23,20 @@ const schema = Joi.object({
 // TODO: might need to set it to 0
 let currentProductId = 34;
 
-app.get("/", (request, response) => {
-  response.send(`Hello! I'm sad.`);
+app.get("/api", (request, response) => {
+  response.status(200).send("OK");
 });
 
-app.get("/products", (request, response) => {
+app.get("/api/health", (request, response) => {
+  response.status(200).send("OK");
+  return;
+});
+
+app.get("/api/products", (request, response) => {
   response.status(200).json(products);
 });
 
-app.get("/products/:id", (request, response) => {
+app.get("/api/products/:id", (request, response) => {
   const paramId = parseInt(request.params.id);
 
   const product = products.find((product) => product.productId === paramId);
@@ -43,7 +50,7 @@ app.get("/products/:id", (request, response) => {
 });
 
 // TODO: validate fields and check if endpoint works
-app.post("/products", (request, response) => {
+app.post("/api/products", (request, response) => {
   const { error } = schema.validate(request.body);
 
   if (error) {
@@ -72,7 +79,7 @@ app.post("/products", (request, response) => {
     });
 });
 
-app.put("/products/:id", (request, response) => {
+app.put("/api/products/:id", (request, response) => {
   const paramId = parseInt(request.params.id);
   const product = products.find((product) => product.productId === paramId);
 
@@ -99,11 +106,6 @@ app.put("/products/:id", (request, response) => {
   }
 
   response.status(404).json({ "Message:": "Product not found" });
-  return;
-});
-
-app.get("/health", (request, response) => {
-  response.status(200).send("OK");
   return;
 });
 
