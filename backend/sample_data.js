@@ -1,6 +1,6 @@
 const products = [
   {
-    productNumber: 0,
+    productId: 0,
     productName: "Trouble",
     productOwnerName: "Keita Terazono",
     developers: [
@@ -16,7 +16,7 @@ const products = [
     location: "github.com/bcgov/1",
   },
   {
-    productNumber: 1,
+    productId: 1,
     productName: "New Kidz on the Block",
     productOwnerName: "Sung Hanbin",
     developers: [
@@ -32,7 +32,7 @@ const products = [
     location: "github.com/bcgov/2",
   },
   {
-    productNumber: 2,
+    productId: 2,
     productName: "Literal Kids",
     productOwnerName: "Park Gunwook",
     developers: ["Park Gunwook", "Han Yujin"],
@@ -42,7 +42,7 @@ const products = [
     location: "github.com/bcgov/1",
   },
   {
-    productNumber: 3,
+    productId: 3,
     productName: "Trouble",
     productOwnerName: "Keita Terazono",
     developers: [
@@ -58,7 +58,7 @@ const products = [
     location: "github.com/bcgov/3"
   },
   {
-    productNumber: 4,
+    productId: 4,
     productName: "WidgetMaster",
     productOwnerName: "Alice Johnson",
     developers: [
@@ -71,7 +71,7 @@ const products = [
     location: "github.com/bcgov/4"
   },
   {
-    productNumber: 5,
+    productId: 5,
     productName: "InnovateNow",
     productOwnerName: "David Rodriguez",
     developers: [
@@ -86,7 +86,7 @@ const products = [
     location: "github.com/bcgov/5"
   },
   {
-    productNumber: 6,
+    productId: 6,
     productName: "TechSolutions",
     productOwnerName: "Michael Wang",
     developers: [
@@ -102,7 +102,7 @@ const products = [
     location: "github.com/bcgov/6"
   },
   {
-    productNumber: 7,
+    productId: 7,
     productName: "DataInsights",
     productOwnerName: "Lily Chen",
     developers: [
@@ -115,7 +115,7 @@ const products = [
     location: "github.com/bcgov/7"
   },
   {
-    productNumber: 8,
+    productId: 8,
     productName: "EcoSolutions",
     productOwnerName: "Sophia Lee",
     developers: [
@@ -128,7 +128,7 @@ const products = [
     location: "github.com/bcgov/8"
   },
   {
-    productNumber: 9,
+    productId: 9,
     productName: "HealthPlus",
     productOwnerName: "Emily Miller",
     developers: [
@@ -140,7 +140,7 @@ const products = [
     location: "github.com/bcgov/9"
   },
   {
-    productNumber: 10,
+    productId: 10,
     productName: "FinanceHub",
     productOwnerName: "Daniel Johnson",
     developers: [
@@ -154,7 +154,7 @@ const products = [
     location: "github.com/bcgov/10"
   },
   {
-    productNumber: 11,
+    productId: 11,
     productName: "TravelEasy",
     productOwnerName: "Liam Martinez",
     developers: [
@@ -170,7 +170,7 @@ const products = [
     location: "github.com/bcgov/11"
   },
   {
-    productNumber: 12,
+    productId: 12,
     productName: "RetailRevolution",
     productOwnerName: "Sophia Hall",
     developers: [
@@ -185,7 +185,7 @@ const products = [
     location: "github.com/bcgov/12"
   },
   {
-    productNumber: 13,
+    productId: 13,
     productName: "SmartCity",
     productOwnerName: "Ella Adams",
     developers: [
@@ -197,7 +197,7 @@ const products = [
     location: "github.com/bcgov/13"
   },
   {
-    productNumber: 14,
+    productId: 14,
     productName: "TechGuru",
     productOwnerName: "Ava Johnson",
     developers: [
@@ -210,7 +210,7 @@ const products = [
     location: "github.com/bcgov/14"
   },
   {
-    productNumber: 15,
+    productId: 15,
     productName: "InnovationX",
     productOwnerName: "Mia Johnson",
     developers: [
@@ -224,7 +224,7 @@ const products = [
     location: "github.com/bcgov/15"
   },
   {
-    productNumber: 16,
+    productId: 16,
     productName: "DataMasters",
     productOwnerName: "Oliver Taylor",
     developers: [
@@ -238,7 +238,7 @@ const products = [
     location: "github.com/bcgov/16"
   },
   {
-    productNumber: 17,
+    productId: 17,
     productName: "HealthTech",
     productOwnerName: "Ethan Davis",
     developers: [
@@ -252,7 +252,7 @@ const products = [
     location: "github.com/bcgov/17"
   },
   {
-    productNumber: 18,
+    productId: 18,
     productName: "FinancePro",
     productOwnerName: "Lily Turner",
     developers: [
@@ -267,7 +267,7 @@ const products = [
     location: "github.com/bcgov/18"
   },
   {
-    productNumber: 19,
+    productId: 19,
     productName: "TravelXpress",
     productOwnerName: "Zoe Smith",
     developers: [
@@ -281,7 +281,7 @@ const products = [
     location: "github.com/bcgov/19"
   },
   {
-    productNumber: 20,
+    productId: 20,
     productName: "RetailRush",
     productOwnerName: "Daniel Brown",
     developers: [
@@ -295,7 +295,7 @@ const products = [
     location: "github.com/bcgov/20"
   },
   {
-    productNumber: 21,
+    productId: 21,
     productName: "SmartVillage",
     productOwnerName: "Sophia Adams",
     developers: [
@@ -309,7 +309,7 @@ const products = [
     location: "github.com/bcgov/21"
   },
   {
-    productNumber: 22,
+    productId: 22,
     productName: "TechGenius",
     productOwnerName: "Lucas White",
     developers: [
@@ -323,7 +323,7 @@ const products = [
     location: "github.com/bcgov/22"
   },
   {
-    productNumber: 23,
+    productId: 23,
     productName: "InnovationWave",
     productOwnerName: "Ella Wilson",
     developers: [
@@ -336,7 +336,7 @@ const products = [
     location: "github.com/bcgov/23"
   },
   {
-    productNumber: 24,
+    productId: 24,
     productName: "DataInsights",
     productOwnerName: "Benjamin Turner",
     developers: [
@@ -349,7 +349,7 @@ const products = [
     location: "github.com/bcgov/24"
   },
   {
-    productNumber: 25,
+    productId: 25,
     productName: "EcoSolutions",
     productOwnerName: "Grace Davis",
     developers: [
@@ -362,7 +362,7 @@ const products = [
     location: "github.com/bcgov/25"
   },
   {
-    productNumber: 26,
+    productId: 26,
     productName: "HealthPlus",
     productOwnerName: "William Smith",
     developers: [
@@ -376,7 +376,7 @@ const products = [
     location: "github.com/bcgov/26"
   },
   {
-    productNumber: 27,
+    productId: 27,
     productName: "FinanceHub",
     productOwnerName: "Liam White",
     developers: [
@@ -390,7 +390,7 @@ const products = [
     location: "github.com/bcgov/27"
   },
   {
-    productNumber: 28,
+    productId: 28,
     productName: "TravelEasy",
     productOwnerName: "Mia Adams",
     developers: [
@@ -406,7 +406,7 @@ const products = [
     location: "github.com/bcgov/28"
   },
   {
-    productNumber: 29,
+    productId: 29,
     productName: "RetailRevolution",
     productOwnerName: "Henry Turner",
     developers: [
@@ -421,7 +421,7 @@ const products = [
     location: "github.com/bcgov/29"
   },
   {
-    productNumber: 30,
+    productId: 30,
     productName: "SmartCity",
     productOwnerName: "Isabella Davis",
     developers: [
@@ -437,7 +437,7 @@ const products = [
     location: "github.com/bcgov/30"
   },
   {
-    productNumber: 31,
+    productId: 31,
     productName: "TechGuru",
     productOwnerName: "Lucas Davis",
     developers: [
@@ -451,7 +451,7 @@ const products = [
     location: "github.com/bcgov/31"
   },
   {
-    productNumber: 32,
+    productId: 32,
     productName: "InnovationX",
     productOwnerName: "Sophia White",
     developers: [
@@ -465,7 +465,7 @@ const products = [
     location: "github.com/bcgov/32"
   },
   {
-    productNumber: 33,
+    productId: 33,
     productName: "DataMasters",
     productOwnerName: "Ella Turner",
     developers: [
@@ -478,7 +478,7 @@ const products = [
     location: "github.com/bcgov/33"
   },
   {
-    productNumber: 34,
+    productId: 34,
     productName: "HealthTech",
     productOwnerName: "Benjamin Turner",
     developers: [

@@ -6,7 +6,7 @@ const port = 3000
 app.use(express.json());
 
 // TODO: might need to set it to 0
-let currentProductNumber = 34; 
+let currentProductId = 34; 
 
 app.get('/', (request, response) => {
     response.send(`Hello! I'm sad.`);
@@ -16,24 +16,24 @@ app.get('/products', (request, response) => {
     response.status(200).json(products)
 })
 
-app.get('/products/:number', (request, response) => {
-    const paramNumber = parseInt(request.params.number);
+app.get('/products/:id', (request, response) => {
+    const paramId = parseInt(request.params.id);
 
-    const product = products.find((product) => product.productNumber === paramNumber );
+    const product = products.find((product) => product.productId === paramId );
     
     if (product) {
-        response.status(200).json({ "Message": `Product with ${paramNumber} found`})
+        response.status(200).json({ "Message": `Product with ${paramId} found`})
         return;
     }
-    response.status(404).json({ "Message":`Product with ${paramNumber} not found` })
+    response.status(404).json({ "Message":`Product with ${paramId} not found` })
 })
 
 // TODO: validate fields and check if endpoint works
 app.post('/products', (request, response) => {
-    currentProductNumber++;
+    currentProductId++;
 
     const newProduct = {
-        productNumber: currentProductNumber,
+        productId: currentProductId,
         productName: request.body.productName,
         productOwnerName: request.body.productOwnerName,
         developers: request.body.developers,
@@ -44,14 +44,14 @@ app.post('/products', (request, response) => {
     }
 
     products.push(newProduct)
-    response.status(201).json({ "Message": "Product is created successfully"})
+    response.status(201).json({ "Message": `Product with id ${currentProductId} is created successfully`})
     response.status(400).json({"Message:": "Product cannot be created"})
 })
 
 // TODO: validate fields and check if endpoint works
-app.put('/products/:number', (request, response) => {
-    const paramNumber = parseInt(request.params.number);
-    const product = products.find((product) => product.productNumber === paramNumber );
+app.put('/products/:id', (request, response) => {
+    const paramId = parseInt(request.params.id);
+    const product = products.find((product) => product.productId === paramId );
     
     if (product) {
         const { productName, productOwnerName, developers, scrumMasterName, methodology, location } = request.body
