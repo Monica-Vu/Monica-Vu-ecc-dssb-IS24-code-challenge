@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 const Table = () => {
   const [data, setData] = useState(null);
+  const [productCount, setProductCount] = useState(0);
+
+  const tableRef = useRef(null);
 
   useEffect(() => {
     fetch('http://localhost:3000/api/products')
@@ -14,9 +17,21 @@ const Table = () => {
     })
   }, []);
 
+  useEffect(() => {
+    const table = tableRef.current;
+
+    if (table) {
+      const numProducts = table.querySelectorAll('tr');
+      setProductCount(numProducts.length - 1)
+    }
+  })
+
   return (
     <div> 
-    {data? (<table className="table table-bordered table-striped">
+    {data? (
+      <div> 
+      <p> <b> Number of Products: </b> {productCount} </p>
+      <table ref={tableRef} className="table table-bordered table-striped">
       <thead>
         <tr>
           <th> Product Id </th>
@@ -44,6 +59,7 @@ const Table = () => {
         ))}
       </tbody>
       </table>
+      </div> 
       ) : (<p> No Data To Display </p>)}
     </div>
   );

@@ -9,15 +9,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
-// TODO: validate startDate field
+// TODO: validate startDate field and change everything to required
 const schema = Joi.object({
   productName: Joi.string().min(1).required(),
   productOwnerName: Joi.string().min(1).required(),
-  developers: Joi.array().min(1).max(5).required(),
-  scrumMasterName: Joi.string().min(1).required(),
-  methodology: Joi.string().valid("Agile", "Waterfall").required(),
-  startDate: Joi.string().min(10).required(),
-  location: Joi.string().min(10).required(),
+  developers: Joi.array().min(1).max(5),
+  scrumMasterName: Joi.string().min(1),
+  methodology: Joi.string().valid("Agile", "Waterfall"),
+  startDate: Joi.string().min(10),
+  location: Joi.string().min(10),
 }).options({ abortEarly: false });
 
 // TODO: might need to set it to 0
