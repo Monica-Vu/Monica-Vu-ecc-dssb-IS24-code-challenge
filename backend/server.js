@@ -16,8 +16,8 @@ const schema = Joi.object({
   developers: Joi.array().min(1).max(5),
   scrumMasterName: Joi.string().min(1),
   methodology: Joi.string().valid("Agile", "Waterfall"),
-  startDate: Joi.string().min(10),
-  location: Joi.string().min(10),
+  startDate: Joi.string().allow(''),
+  location: Joi.string().allow('')
 }).options({ abortEarly: false });
 
 // TODO: might need to set it to 0
@@ -84,6 +84,8 @@ app.post("/api/products", (request, response) => {
 app.put("/api/products/:id", (request, response) => {
   const paramId = parseInt(request.params.id);
   const product = products.find((product) => product.productId === paramId);
+
+  console.log("request =>", request);
 
   if (product) {
     const {

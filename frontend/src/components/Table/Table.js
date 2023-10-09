@@ -1,21 +1,15 @@
 import React, { useRef, useState, useEffect } from "react";
+import ProductContext from "../ProductContext/ProductContext"
+import UserContext from "../UserContext/UserContext"
 
 const Table = () => {
-  const [data, setData] = useState(null);
+  // const [data, setData] = useState(null);
+  const { data } = React.useContext(ProductContext);
+  const { selectedUser } = React.useContext(UserContext);
+
   const [productCount, setProductCount] = useState(0);
 
   const tableRef = useRef(null);
-
-  useEffect(() => {
-    fetch('http://localhost:3000/api/products')
-    .then((response) => response.json())
-    .then((responseData) => {
-      setData(responseData);
-    })
-    .catch((error) => {
-      console.error('Error fetching data', error);
-    })
-  });
 
   useEffect(() => {
     const table = tableRef.current;
@@ -42,6 +36,7 @@ const Table = () => {
           <th> Start Date </th>
           <th> Methodology </th>
           <th> Location </th>
+          {selectedUser === "Alan" && <th> Edit </th>}
         </tr>
       </thead>
       <tbody>

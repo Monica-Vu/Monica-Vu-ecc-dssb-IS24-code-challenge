@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ProductModal from "./Modal";
 import AddButton from "./Button";
+import ProductContext from "../ProductContext/ProductContext";
 
 function Parent({ user }) {
   const intialProductState = {
@@ -8,13 +9,14 @@ function Parent({ user }) {
     productOwnerName: "",
     developers: "",
     scrumMasterName: "",
-    startDate: new Date(),
+    startDate: "",
     methodology: "Agile",
     location: "",
   };
 
   const [show, setShow] = useState(false);
   const [formData, setFormData] = useState(intialProductState);
+  const { fetchData } = React.useContext(ProductContext);
 
   const handleClose = () => {
     setShow(false);
@@ -28,7 +30,7 @@ function Parent({ user }) {
           formData[key] = formData[key].split(",");
         }
 
-        if (key === "startDate") {
+        if (key === "startDate" && typeof(formData[key]) === Date) {
             formData[key] = formData[key].toISOString().split('T')[0].replaceAll("-", "/");
         }
         
@@ -49,6 +51,7 @@ function Parent({ user }) {
           console.log("Server response: ", data);
           handleClose();
           setFormData(intialProductState);
+          fetchData()
         });
     } catch (error) {
       console.error("Error:", error);

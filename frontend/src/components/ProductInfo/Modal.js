@@ -3,6 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import UserContext from "../UserContext/UserContext"
 
 function ProductModal({
   show,
@@ -10,12 +11,11 @@ function ProductModal({
   handleSubmit,
   formData,
   setFormData,
-  user
 }) {
-
+  const { selectedUser } = React.useContext(UserContext);
+  
   return (
     <Modal show={show} onHide={handleClose}>
-    {console.log("user =>", user)}
       <Modal.Header closeButton>
         <Modal.Title>Add Product</Modal.Title>
       </Modal.Header>
@@ -92,21 +92,25 @@ function ProductModal({
               required
             />
           </div>
-          <label htmlFor="startdate" className="form-label pl-2">
-            Select Start Date
-          </label>
-          <DatePicker
-            selected={formData["startDate"]}
-            onChange={(date) =>
-              setFormData((prevFormData) => ({
-                ...prevFormData,
-                startDate: date,
-              }))
-            }
-            dateFormat="yyyy/MM/dd"
-            className="form-control"
-          />
-          <br />
+          {selectedUser === "Lisa" && (
+            <div className="datePicker">
+              <label htmlFor="startdate" className="form-label pl-2">
+                Select Start Date
+              </label>
+              <DatePicker
+                selected={formData["startDate"]}
+                onChange={(date) =>
+                  setFormData((prevFormData) => ({
+                    ...prevFormData,
+                    startDate: date,
+                  }))
+                }
+                dateFormat="yyyy/MM/dd"
+                className="form-control"
+              />
+              <br />
+            </div>
+          )}
           <label htmlFor="methodology" className="form-label pr-2">
             Select Methodology
           </label>
@@ -114,36 +118,36 @@ function ProductModal({
             className="form-select"
             aria-label="Select Methodology"
             value={formData["methodology"]}
-            onChange={(e) =>
-            {
+            onChange={(e) => {
               setFormData((prevFormData) => ({
                 ...prevFormData,
                 methodology: e.target.value,
-              }))
+              }));
             }}
           >
             <option value="Agile">Agile</option>
             <option value="Waterfall">Waterfall</option>
           </select>
-          {user === "Alan" && 
-          <div className="mb-3">
-            <label htmlFor="location" className="form-label">
-              Location
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="location"
-              value={formData["location"]}
-              onChange={(e) =>
-                setFormData((prevFormData) => ({
-                  ...prevFormData,
-                  location: e.target.value,
-                }))
-              }
-              required
-            />
-          </div>}
+          {selectedUser === "Alan" && (
+            <div className="mb-3">
+              <label htmlFor="location" className="form-label">
+                Location
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="location"
+                value={formData["location"]}
+                onChange={(e) =>
+                  setFormData((prevFormData) => ({
+                    ...prevFormData,
+                    location: e.target.value,
+                  }))
+                }
+                required
+              />
+            </div>
+          )}
         </form>
       </Modal.Body>
       <Modal.Footer>
