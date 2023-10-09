@@ -1,6 +1,5 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import Table from "./components/Table/Table";
 import Parent from "./components/ProductInfo/Parent";
 import ProductContext from "./components/ProductContext/ProductContext";
 import UserContext from "./components/UserContext/UserContext"
@@ -41,7 +40,6 @@ function App() {
         </select>
         <h1> Ministry of Government Applications </h1>
         <Parent />
-        <Table />
       </div>
     </ProductContext.Provider>
     </UserContext.Provider>

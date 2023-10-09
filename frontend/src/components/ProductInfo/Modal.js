@@ -11,13 +11,14 @@ function ProductModal({
   handleSubmit,
   formData,
   setFormData,
+  mode
 }) {
   const { selectedUser } = React.useContext(UserContext);
   
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Add Product</Modal.Title>
+        <Modal.Title>{mode === 'edit' ? 'Update': 'Add'} Product</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <form>
@@ -82,7 +83,7 @@ function ProductModal({
               type="text"
               className="form-control"
               id="scrum-master-name"
-              value={formData["scrumMaseterName"]}
+              value={formData["scrumMasterName"]}
               onChange={(e) =>
                 setFormData((prevFormData) => ({
                   ...prevFormData,
