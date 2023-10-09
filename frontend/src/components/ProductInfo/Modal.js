@@ -156,7 +156,7 @@ function ProductModal({
           Close
         </Button>
         <Button variant="primary" onClick={handleSubmit}>
-          Submit
+          {mode === 'edit'? 'Save' : 'Submit'}
         </Button>
       </Modal.Footer>
     </Modal>
