@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import DatePicker from "react-datepicker";
@@ -10,10 +10,12 @@ function ProductModal({
   handleSubmit,
   formData,
   setFormData,
+  user
 }) {
 
   return (
     <Modal show={show} onHide={handleClose}>
+    {console.log("user =>", user)}
       <Modal.Header closeButton>
         <Modal.Title>Add Product</Modal.Title>
       </Modal.Header>
@@ -106,7 +108,7 @@ function ProductModal({
           />
           <br />
           <label htmlFor="methodology" className="form-label pr-2">
-            Select Agile Methodology
+            Select Methodology
           </label>
           <select
             className="form-select"
@@ -120,10 +122,10 @@ function ProductModal({
               }))
             }}
           >
-           <option selected>Please select a methodology</option>
             <option value="Agile">Agile</option>
             <option value="Waterfall">Waterfall</option>
           </select>
+          {user === "Alan" && 
           <div className="mb-3">
             <label htmlFor="location" className="form-label">
               Location
@@ -141,7 +143,7 @@ function ProductModal({
               }
               required
             />
-          </div>
+          </div>}
         </form>
       </Modal.Body>
       <Modal.Footer>

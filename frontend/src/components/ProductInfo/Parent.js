@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import ProductModal from "./Modal";
 import AddButton from "./Button";
 
-function Parent() {
+function Parent({ user }) {
   const intialProductState = {
     productName: "",
     productOwnerName: "",
     developers: "",
     scrumMasterName: "",
     startDate: new Date(),
-    methodology: "",
+    methodology: "Agile",
     location: "",
   };
 
@@ -64,6 +64,7 @@ function Parent() {
         handleSubmit={handleSubmit}
         setFormData={setFormData}
         formData={formData}
+        user={user}
       />
     </div>
   );

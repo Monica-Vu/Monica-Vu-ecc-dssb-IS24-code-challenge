@@ -53,7 +53,7 @@ app.get("/api/products/:id", (request, response) => {
 app.post("/api/products", (request, response) => {
   const { error } = schema.validate(request.body);
 
-  console.log(`REsponse Body: `, request.body);
+  console.log(`Response Body: `, request.body);
 
   if (error) {
     const errorMessages = error.details.map((detail) => detail.message);

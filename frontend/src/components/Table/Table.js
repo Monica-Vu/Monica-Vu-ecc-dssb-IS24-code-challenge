@@ -15,7 +15,7 @@ const Table = () => {
     .catch((error) => {
       console.error('Error fetching data', error);
     })
-  }, []);
+  });
 
   useEffect(() => {
     const table = tableRef.current;
