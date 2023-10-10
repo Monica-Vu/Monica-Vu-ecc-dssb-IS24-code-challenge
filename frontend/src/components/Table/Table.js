@@ -1,13 +1,13 @@
 import React, { useRef, useState, useEffect } from "react";
+
 import ProductContext from "../ProductContext/ProductContext";
 import UserContext from "../UserContext/UserContext";
 import CustomButton from "../Button";
 
-const Table = ({ handleShow, setMode, setFormData }) => {
+const Table = ({ handleShow, setMode, setFormData, reset }) => {
   // const [data, setData] = useState(null);
   const { data } = React.useContext(ProductContext);
   const { selectedUser } = React.useContext(UserContext);
-
   const [productCount, setProductCount] = useState(0);
 
   const tableRef = useRef(null);
@@ -58,7 +58,7 @@ const Table = ({ handleShow, setMode, setFormData }) => {
                     label={"Edit"}
                     onClick={() => {
                       console.log("clicked!")
-                      setFormData({
+                      reset({
                         ...item,
                         developers: item.developers.join(","),
                         startDate: item.startDate ? new Date(item.startDate) : '',

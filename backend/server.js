@@ -11,6 +11,7 @@ app.use(cors());
 
 // TODO: validate startDate field and change everything to required
 const schema = Joi.object({
+  productId: Joi.number().integer(),
   productName: Joi.string().min(1).required().messages({
     'string.empty': `Product Name cannot be empty`,
     'any.required': `Product Name is a required field `
@@ -108,6 +109,13 @@ app.put("/api/products/:id", (request, response) => {
 
   console.log("request =>", request);
 
+  const { error } = schema.validate(request.body);
+
+  if (error) {
+    const errorMessages = error.details.map((detail) => detail.message);
+    return response.status(400).json({ Errors: errorMessages });
+  }
+
   if (product) {
     const {
       productName,
@@ -118,7 +126,7 @@ app.put("/api/products/:id", (request, response) => {
       location,
     } = request.body;
     product.productName = productName;
-    product.productOwnerName = productOwnerName;Z
+    product.productOwnerName = productOwnerName;
     product.scrumMasterName = scrumMasterName;
     product.developers = developers;
     product.methodology = methodology;

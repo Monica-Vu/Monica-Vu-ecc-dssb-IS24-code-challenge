@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+
 import ProductModal from "./Modal";
 import CustomButton from "../Button";
 import ProductContext from "../ProductContext/ProductContext";
@@ -20,52 +22,66 @@ function Parent({ user }) {
   const [show, setShow] = useState(false);
   const [formData, setFormData] = useState(intialProductState);
   const [mode, setMode] = useState("edit");
-  const [errorMessage, setErrorMessage] = useState([])
-  
+  const [errorMessage, setErrorMessage] = useState([]);
+
+  const {
+    register,
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   const handleClose = () => {
     setErrorMessage("");
     setShow(false);
   };
   const handleShow = () => setShow(true);
-  const handleSubmit = () => {
+  const sendData = (data) => {
     try {
       const formDataObject = {};
-      for (const key in formData) {
+      for (const key in data) {
         if (key === "developers") {
-          if (formData[key].length > 0) {
-            formDataObject[key] = formData[key].split(",");
+          if (data[key].length > 0) {
+            formDataObject[key] = data[key].split(",");
           } else {
-            formDataObject[key] = []
+            formDataObject[key] = [];
           }
-        } else if (key === "startDate" && formData[key] instanceof Date) {
-          console.log(`date => `, formData[key]);
-          formDataObject[key] = formData[key]
+        } else if (key === "startDate" && data[key] instanceof Date) {
+          console.log(`date => `, data[key]);
+          formDataObject[key] = data[key]
             .toISOString()
             .split("T")[0]
             .replaceAll("-", "/");
         } else {
-          formDataObject[key] = formData[key];
+          formDataObject[key] = data[key];
         }
-
       }
 
       console.log("formDataObject =>", JSON.stringify(formDataObject));
 
       if (mode === "edit") {
-        fetch(`http://localhost:3000/api/products/${formData["productId"]}`, {
+        fetch(`http://localhost:3000/api/products/${data["productId"]}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(formDataObject),
         })
-          .then((response) => response.json())
-          .then((data) => {
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.Errors) {
+            console.log("data.Errors =>", data.Errors);
+            setErrorMessage(data.Errors);
+            console.log("current state of error message", errorMessage);
+          } else {
+            // MAKE SURE THIS NO LONGER RUNS WHEN THERE'S AN ERROR!!
             console.log("Server response: ", data);
             handleClose();
+            setErrorMessage("");
             setFormData(intialProductState);
             fetchData();
+          }
           });
       } else {
         fetch("http://localhost:3000/api/products", {
@@ -75,11 +91,11 @@ function Parent({ user }) {
           },
           body: JSON.stringify(formDataObject),
         })
-          .then((response) =>  response.json())
+          .then((response) => response.json())
           .then((data) => {
             if (data.Errors) {
               console.log("data.Errors =>", data.Errors);
-              setErrorMessage(data.Errors)
+              setErrorMessage(data.Errors);
               console.log("current state of error message", errorMessage);
               // const errors = []
               // for (let i = 0; i < data.Errors.length; i++) {
@@ -87,12 +103,12 @@ function Parent({ user }) {
               // }
               // console.log("data.Errors =>", data.Errors);
             } else {
-                // MAKE SURE THIS NO LONGER RUNS WHEN THERE'S AN ERROR!!
-                console.log("Server response: ", data);
-                handleClose();
-                setErrorMessage("");
-                setFormData(intialProductState);
-                fetchData();
+              // MAKE SURE THIS NO LONGER RUNS WHEN THERE'S AN ERROR!!
+              console.log("Server response: ", data);
+              handleClose();
+              setErrorMessage("");
+              setFormData(intialProductState);
+              fetchData();
             }
           });
       }
@@ -103,24 +119,33 @@ function Parent({ user }) {
 
   return (
     <div>
-      <CustomButton onClick={() => { 
-        setFormData(intialProductState);
-        setMode("Add"); 
-        handleShow();
-      }} label={"Add"} />
+      <CustomButton
+        onClick={() => {
+          setFormData(intialProductState);
+          setMode("Add");
+          handleShow();
+        }}
+        label={"Add"}
+      />
       <ProductModal
         show={show}
         handleClose={handleClose}
-        handleSubmit={handleSubmit}
+        sendData={sendData}
         setFormData={setFormData}
         formData={formData}
         mode={mode}
         errorMessage={errorMessage}
+        register={register}
+        control={control}
+        handleSubmit={handleSubmit}
+        errors={errors}
       />
       <Table
         handleShow={handleShow}
         setMode={setMode}
+        // Replace setFormData with reset here
         setFormData={setFormData}
+        reset={reset}
       />
     </div>
   );
