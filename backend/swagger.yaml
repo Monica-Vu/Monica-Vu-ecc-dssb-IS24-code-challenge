@@ -34,6 +34,21 @@ paths:
             application/json:
               schema: 
                 type: array
+    post:
+      tags: 
+        - ECC Ministry Products
+      summary: Create product
+      requestBody: 
+        required: true
+        content:
+          application/json:
+            schema: 
+              $ref: '#/components/schemas/Product'
+      responses: 
+        '201':    
+          description: Product successfully created
+        '400':
+          description: Product could not be created
   /products/{id}:
     get:
       tags: 
@@ -52,14 +67,40 @@ paths:
           description: Product with given Id was found
         '404': 
           description: Product with given Id was not found
-    /products:
-    post:
-      tags: 
-        - ECC Ministry Products
-      summary: Create product
-      request:
-        description: Create product object
-        '200':    
-          description: Product successfully created
-        '400':
-          description: Product could not be created
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        productName:
+          type: string
+          example: Test Product Name
+        productOwnerName:
+          type: string
+          example: Test Product Owner
+        developers: 
+          type: array
+          example: [dev1, dev2]
+        scrumMasterName:
+          type: string 
+          example: Test Scrum Master Name
+        methodology: 
+          type: string
+          example: Agile
+        startDate:
+          type: string
+          example: 2023/09/05
+      required:
+        - productName
+        - productOwnerName
+        - developers
+        - scrumMasterName
+        - methodology
+  requestBodies:
+    Product:
+      description: Product owner
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Product'
