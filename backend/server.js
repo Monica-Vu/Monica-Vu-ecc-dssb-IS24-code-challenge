@@ -2,14 +2,37 @@ const express = require("express");
 const Joi = require("joi");
 const cors = require('cors');
 const products = require("./sample_data");
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsDoc = require('swagger-jsdoc');
+
 const app = express();
 const port = 3000;
+
+const swaggerOptions = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'My API',
+      version: '1.0.0',
+      description: 'A sample API for learning Swagger',
+    },
+    servers: [
+      {
+        url: 'http://localhost:3000',
+      },
+    ],
+  },
+  apis: ['./routes/*.js'],
+};
+
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
-// TODO: validate startDate field and change everything to required
 const schema = Joi.object({
   productId: Joi.number().integer(),
   productName: Joi.string().min(1).required().messages({
@@ -65,12 +88,6 @@ app.get("/api/products/:id", (request, response) => {
   response.status(404).json({ Message: `Product with ${paramId} not found` });
 });
 
-/*
-- get the user via request.body
-- make two schemas -> one for alan and one for lisa and then validate as needed
-*/
-
-// TODO: validate fields and check if endpoint works
 app.post("/api/products", (request, response) => {
   console.log("request.body =>", request.body);
   const { error } = schema.validate(request.body);
