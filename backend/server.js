@@ -12,20 +12,19 @@ const swaggerOptions = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'My API',
+      title: 'ECC Ministry Applications API',
       version: '1.0.0',
-      description: 'A sample API for learning Swagger',
+      description: 'API for Coding Challenge (IS24 - Full Stack Developer at Ministry of Education & Child Care)',
     },
+    basePath: "/api",
     servers: [
       {
         url: 'http://localhost:3000',
       },
     ],
   },
-  apis: ['./routes/*.js'],
+  apis: ['./swagger.yaml'],
 };
-
-
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
@@ -62,18 +61,49 @@ const schema = Joi.object({
 // TODO: might need to set it to 0
 let currentProductId = 34;
 
+// TODO: maybe delete
 app.get("/api", (request, response) => {
   response.status(200).send("OK");
 });
+
+// /**
+//  * @openapi
+//  * /api/health:
+//  *   get:
+//  *     description: Health check for endpoint
+//  *     responses:
+//  *       200:
+//  *         description: Returns "OK" to indicate the server is up and running
+//  */
 
 app.get("/api/health", (request, response) => {
   response.status(200).send("OK");
   return;
 });
 
+// /**
+//  * @openapi
+//  * /api/products:
+//  *   get:
+//  *     description: Return all products
+//  *     responses:
+//  *       200:
+//  *         description: Successfully returns all products 
+//  */
+
 app.get("/api/products", (request, response) => {
   response.status(200).json(products);
 });
+
+/**
+ * @openapi
+ * /api/products/:id:
+ *   get:
+ *     description: Indicate if product with given id exists or not
+ *     responses:
+ *       200:
+ *         description: Product with given id was successfully found
+ */
 
 app.get("/api/products/:id", (request, response) => {
   const paramId = parseInt(request.params.id);
@@ -87,6 +117,16 @@ app.get("/api/products/:id", (request, response) => {
 
   response.status(404).json({ Message: `Product with ${paramId} not found` });
 });
+
+// /**
+//  * @openapi
+//  * /api/products:
+//  *   get:
+//  *     description: Indicate if product with given id exists or not
+//  *     responses:
+//  *       200:
+//  *         description: Product with given id was successfully found
+//  */
 
 app.post("/api/products", (request, response) => {
   console.log("request.body =>", request.body);
