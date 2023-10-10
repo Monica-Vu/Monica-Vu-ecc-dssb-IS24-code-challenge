@@ -6,6 +6,8 @@ import CustomButton from "../Button";
 import ProductContext from "../ProductContext/ProductContext";
 import Table from "../Table/Table";
 
+const HOST = "http://localhost:3000";
+
 function Parent() {
   const intialProductState = {
     productName: "",
@@ -60,7 +62,7 @@ function Parent() {
       console.log("formDataObject =>", JSON.stringify(formDataObject));
 
       if (mode === "edit") {
-        fetch(`http://localhost:3000/api/products/${data["productId"]}`, {
+        fetch(`${HOST}/api/products/${data["productId"]}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -81,7 +83,7 @@ function Parent() {
           }
           });
       } else {
-        fetch("http://localhost:3000/api/products", {
+        fetch(`${HOST}/api/products`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
