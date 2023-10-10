@@ -19,12 +19,13 @@ const swaggerOptions = {
     basePath: "/api",
     servers: [
       {
-        url: 'http://localhost:3000',
+        url: 'http://localhost:3000/api',
       },
     ],
   },
   apis: ['./swagger.yaml'],
 };
+
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
@@ -66,44 +67,14 @@ app.get("/api", (request, response) => {
   response.status(200).send("OK");
 });
 
-// /**
-//  * @openapi
-//  * /api/health:
-//  *   get:
-//  *     description: Health check for endpoint
-//  *     responses:
-//  *       200:
-//  *         description: Returns "OK" to indicate the server is up and running
-//  */
-
 app.get("/api/health", (request, response) => {
   response.status(200).send("OK");
   return;
 });
 
-// /**
-//  * @openapi
-//  * /api/products:
-//  *   get:
-//  *     description: Return all products
-//  *     responses:
-//  *       200:
-//  *         description: Successfully returns all products 
-//  */
-
 app.get("/api/products", (request, response) => {
   response.status(200).json(products);
 });
-
-/**
- * @openapi
- * /api/products/:id:
- *   get:
- *     description: Indicate if product with given id exists or not
- *     responses:
- *       200:
- *         description: Product with given id was successfully found
- */
 
 app.get("/api/products/:id", (request, response) => {
   const paramId = parseInt(request.params.id);
@@ -117,16 +88,6 @@ app.get("/api/products/:id", (request, response) => {
 
   response.status(404).json({ Message: `Product with ${paramId} not found` });
 });
-
-// /**
-//  * @openapi
-//  * /api/products:
-//  *   get:
-//  *     description: Indicate if product with given id exists or not
-//  *     responses:
-//  *       200:
-//  *         description: Product with given id was successfully found
-//  */
 
 app.post("/api/products", (request, response) => {
   console.log("request.body =>", request.body);

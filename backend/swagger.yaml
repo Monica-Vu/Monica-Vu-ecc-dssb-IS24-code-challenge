@@ -4,11 +4,28 @@ info:
   description: 'API for Coding Challenge (IS24 - Full Stack Developer at Ministry of Education & Child Care)'
   version: 1.0.0
 servers:
-  - url: 'http://localhost:3000'
+  - url: 'http://localhost:3000/api'
     description: Server for development
+tags: 
+  - name: ECC Ministry Products
+    description: All products maintained or being worked on by the Ministry of Education and Child Care
 paths:
+  /health:
+    get:
+      tags: 
+        - ECC Ministry Products 
+      summary: Check health of the server
+      responses:
+        '200': 
+          description: A successful health check returns "OK"
+          content:
+            application/json:
+              schema: 
+                type: array
   /products:
     get:
+      tags: 
+        - ECC Ministry Products
       summary: Returns a list of products.
       responses:
         '200':    
@@ -17,3 +34,32 @@ paths:
             application/json:
               schema: 
                 type: array
+  /products/{id}:
+    get:
+      tags: 
+        - ECC Ministry Products
+      summary: Find product by ID
+      parameters: 
+        - name: id
+          in: path
+          description: ID of product that needs to be fetched
+          required: true 
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':    
+          description: Product with given Id was found
+        '404': 
+          description: Product with given Id was not found
+    /products:
+    post:
+      tags: 
+        - ECC Ministry Products
+      summary: Create product
+      request:
+        description: Create product object
+        '200':    
+          description: Product successfully created
+        '400':
+          description: Product could not be created
