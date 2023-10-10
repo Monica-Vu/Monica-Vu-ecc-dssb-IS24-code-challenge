@@ -11,8 +11,6 @@ function ProductModal({
   show,
   handleClose,
   sendData,
-  formData,
-  setFormData,
   mode,
   errorMessage,
   register,

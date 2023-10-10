@@ -4,7 +4,7 @@ import ProductContext from "../ProductContext/ProductContext";
 import UserContext from "../UserContext/UserContext";
 import CustomButton from "../Button";
 
-const Table = ({ handleShow, setMode, setFormData, reset }) => {
+const Table = ({ handleShow, setMode, reset }) => {
   // const [data, setData] = useState(null);
   const { data } = React.useContext(ProductContext);
   const { selectedUser } = React.useContext(UserContext);

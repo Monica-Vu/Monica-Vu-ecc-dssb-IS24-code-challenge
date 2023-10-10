@@ -6,7 +6,7 @@ import CustomButton from "../Button";
 import ProductContext from "../ProductContext/ProductContext";
 import Table from "../Table/Table";
 
-function Parent({ user }) {
+function Parent() {
   const intialProductState = {
     productName: "",
     productOwnerName: "",
@@ -20,7 +20,6 @@ function Parent({ user }) {
   const { fetchData } = React.useContext(ProductContext);
 
   const [show, setShow] = useState(false);
-  const [formData, setFormData] = useState(intialProductState);
   const [mode, setMode] = useState("edit");
   const [errorMessage, setErrorMessage] = useState([]);
 
@@ -75,11 +74,9 @@ function Parent({ user }) {
             setErrorMessage(data.Errors);
             console.log("current state of error message", errorMessage);
           } else {
-            // MAKE SURE THIS NO LONGER RUNS WHEN THERE'S AN ERROR!!
             console.log("Server response: ", data);
             handleClose();
             setErrorMessage("");
-            setFormData(intialProductState);
             fetchData();
           }
           });
@@ -107,7 +104,6 @@ function Parent({ user }) {
               console.log("Server response: ", data);
               handleClose();
               setErrorMessage("");
-              setFormData(intialProductState);
               fetchData();
             }
           });
@@ -121,9 +117,9 @@ function Parent({ user }) {
     <div>
       <CustomButton
         onClick={() => {
-          setFormData(intialProductState);
           setMode("Add");
           handleShow();
+          reset(intialProductState);
         }}
         label={"Add"}
       />
@@ -131,8 +127,6 @@ function Parent({ user }) {
         show={show}
         handleClose={handleClose}
         sendData={sendData}
-        setFormData={setFormData}
-        formData={formData}
         mode={mode}
         errorMessage={errorMessage}
         register={register}
@@ -143,8 +137,6 @@ function Parent({ user }) {
       <Table
         handleShow={handleShow}
         setMode={setMode}
-        // Replace setFormData with reset here
-        setFormData={setFormData}
         reset={reset}
       />
     </div>
