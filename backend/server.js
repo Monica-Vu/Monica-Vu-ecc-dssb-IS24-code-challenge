@@ -11,11 +11,26 @@ app.use(cors());
 
 // TODO: validate startDate field and change everything to required
 const schema = Joi.object({
-  productName: Joi.string().min(1).required(),
-  productOwnerName: Joi.string().min(1).required(),
-  developers: Joi.array().min(1).max(5),
-  scrumMasterName: Joi.string().min(1),
-  methodology: Joi.string().valid("Agile", "Waterfall"),
+  productName: Joi.string().min(1).required().messages({
+    'string.empty': `Product Name cannot be empty`,
+    'any.required': `Product Name is a required field `
+  }),
+  productOwnerName: Joi.string().min(1).required().messages({
+    'string.empty': `Product Owner Name cannot be empty`,
+    'any.required': `Product Owner Name is a required field`
+  }),
+  developers: Joi.array().min(1).max(5).required().messages({
+    'array.min': `Please list at least one developer`, 
+    'array.max': "Please list no more than five developers",
+    'any.required': `Developer(s) cannot be empty`
+  }),
+  scrumMasterName: Joi.string().min(1).required().messages({
+    'string.empty': `Scrum Master Name cannot be empty`,
+    'any.required': `Scrum master is a required field`
+  }),
+  methodology: Joi.string().valid("Agile", "Waterfall").required().messages({
+    'any.required': `Methodology must either be Agile or Waterfall`
+  }),
   startDate: Joi.string().allow(''),
   location: Joi.string().allow('')
 }).options({ abortEarly: false });
@@ -49,8 +64,14 @@ app.get("/api/products/:id", (request, response) => {
   response.status(404).json({ Message: `Product with ${paramId} not found` });
 });
 
+/*
+- get the user via request.body
+- make two schemas -> one for alan and one for lisa and then validate as needed
+*/
+
 // TODO: validate fields and check if endpoint works
 app.post("/api/products", (request, response) => {
+  console.log("request.body =>", request.body);
   const { error } = schema.validate(request.body);
 
   console.log(`Response Body: `, request.body);
@@ -97,7 +118,7 @@ app.put("/api/products/:id", (request, response) => {
       location,
     } = request.body;
     product.productName = productName;
-    product.productOwnerName = productOwnerName;
+    product.productOwnerName = productOwnerName;Z
     product.scrumMasterName = scrumMasterName;
     product.developers = developers;
     product.methodology = methodology;

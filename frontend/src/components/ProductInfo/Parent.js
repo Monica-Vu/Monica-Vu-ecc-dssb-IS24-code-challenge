@@ -20,9 +20,11 @@ function Parent({ user }) {
   const [show, setShow] = useState(false);
   const [formData, setFormData] = useState(intialProductState);
   const [mode, setMode] = useState("edit");
+  const [errorMessage, setErrorMessage] = useState([])
   
 
   const handleClose = () => {
+    setErrorMessage("");
     setShow(false);
   };
   const handleShow = () => setShow(true);
@@ -31,19 +33,21 @@ function Parent({ user }) {
       const formDataObject = {};
       for (const key in formData) {
         if (key === "developers") {
-          formData[key] = formData[key].split(",");
-        }
-
-        if (key === "startDate" && formData[key] instanceof Date) {
-          debugger;
+          if (formData[key].length > 0) {
+            formDataObject[key] = formData[key].split(",");
+          } else {
+            formDataObject[key] = []
+          }
+        } else if (key === "startDate" && formData[key] instanceof Date) {
           console.log(`date => `, formData[key]);
-          formData[key] = formData[key]
+          formDataObject[key] = formData[key]
             .toISOString()
             .split("T")[0]
             .replaceAll("-", "/");
+        } else {
+          formDataObject[key] = formData[key];
         }
 
-        formDataObject[key] = formData[key];
       }
 
       console.log("formDataObject =>", JSON.stringify(formDataObject));
@@ -71,12 +75,25 @@ function Parent({ user }) {
           },
           body: JSON.stringify(formDataObject),
         })
-          .then((response) => response.json())
+          .then((response) =>  response.json())
           .then((data) => {
-            console.log("Server response: ", data);
-            handleClose();
-            setFormData(intialProductState);
-            fetchData();
+            if (data.Errors) {
+              console.log("data.Errors =>", data.Errors);
+              setErrorMessage(data.Errors)
+              console.log("current state of error message", errorMessage);
+              // const errors = []
+              // for (let i = 0; i < data.Errors.length; i++) {
+              //   console.log("message =>", data.Errors[i]);
+              // }
+              // console.log("data.Errors =>", data.Errors);
+            } else {
+                // MAKE SURE THIS NO LONGER RUNS WHEN THERE'S AN ERROR!!
+                console.log("Server response: ", data);
+                handleClose();
+                setErrorMessage("");
+                setFormData(intialProductState);
+                fetchData();
+            }
           });
       }
     } catch (error) {
@@ -98,6 +115,7 @@ function Parent({ user }) {
         setFormData={setFormData}
         formData={formData}
         mode={mode}
+        errorMessage={errorMessage}
       />
       <Table
         handleShow={handleShow}

@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import UserContext from "../UserContext/UserContext"
@@ -11,7 +12,8 @@ function ProductModal({
   handleSubmit,
   formData,
   setFormData,
-  mode
+  mode,
+  errorMessage,
 }) {
   const { selectedUser } = React.useContext(UserContext);
   
@@ -22,6 +24,11 @@ function ProductModal({
       </Modal.Header>
       <Modal.Body>
         <form>
+          {errorMessage.length > 0 && 
+            <Alert variant="danger">
+              {errorMessage.map((message) => { return <p>{message}</p>})}
+            </Alert>
+          }
           <div className="mb-3">
             <label htmlFor="product-name" className="form-label">
               Product Name
@@ -62,6 +69,8 @@ function ProductModal({
             <label htmlFor="developers" className="form-label">
               Developer(s)
             </label>
+            <br /> 
+            <small id ="developersHelp" className="form-text text-muted"> Please seperate each developer name by comma. Make sure to not have a comma at the end or there will be an error. </small>
             <textarea
               className="form-control"
               id="developers"
