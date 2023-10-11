@@ -57,7 +57,6 @@ const Table = ({ handleShow, setMode, reset }) => {
                     <CustomButton
                     label={"Edit"}
                     onClick={() => {
-                      console.log("clicked!")
                       reset({
                         ...item,
                         developers: item.developers.join(","),

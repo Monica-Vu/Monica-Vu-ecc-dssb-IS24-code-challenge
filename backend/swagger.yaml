@@ -104,7 +104,7 @@ paths:
               $ref: '#/components/schemas/Product'
       responses:
         '200':
-          description: Product successfully updated
+          description: Product successfully update
         '404': 
           description: Product could not be updated
 

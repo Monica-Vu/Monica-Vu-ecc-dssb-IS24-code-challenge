@@ -49,7 +49,6 @@ function Parent() {
             formDataObject[key] = [];
           }
         } else if (key === "startDate" && data[key] instanceof Date) {
-          console.log(`date => `, data[key]);
           formDataObject[key] = data[key]
             .toISOString()
             .split("T")[0]
@@ -58,8 +57,6 @@ function Parent() {
           formDataObject[key] = data[key];
         }
       }
-
-      console.log("formDataObject =>", JSON.stringify(formDataObject));
 
       if (mode === "edit") {
         fetch(`${HOST}/api/products/${data["productId"]}`, {
@@ -72,11 +69,8 @@ function Parent() {
         .then((response) => response.json())
         .then((data) => {
           if (data.Errors) {
-            console.log("data.Errors =>", data.Errors);
             setErrorMessage(data.Errors);
-            console.log("current state of error message", errorMessage);
           } else {
-            console.log("Server response: ", data);
             handleClose();
             setErrorMessage("");
             fetchData();
@@ -93,17 +87,8 @@ function Parent() {
           .then((response) => response.json())
           .then((data) => {
             if (data.Errors) {
-              console.log("data.Errors =>", data.Errors);
               setErrorMessage(data.Errors);
-              console.log("current state of error message", errorMessage);
-              // const errors = []
-              // for (let i = 0; i < data.Errors.length; i++) {
-              //   console.log("message =>", data.Errors[i]);
-              // }
-              // console.log("data.Errors =>", data.Errors);
             } else {
-              // MAKE SURE THIS NO LONGER RUNS WHEN THERE'S AN ERROR!!
-              console.log("Server response: ", data);
               handleClose();
               setErrorMessage("");
               fetchData();

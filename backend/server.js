@@ -90,10 +90,7 @@ app.get("/api/products/:id", (request, response) => {
 });
 
 app.post("/api/products", (request, response) => {
-  console.log("request.body =>", request.body);
   const { error } = schema.validate(request.body);
-
-  console.log(`Response Body: `, request.body);
 
   if (error) {
     const errorMessages = error.details.map((detail) => detail.message);
@@ -124,8 +121,6 @@ app.post("/api/products", (request, response) => {
 app.put("/api/products/:id", (request, response) => {
   const paramId = parseInt(request.params.id);
   const product = products.find((product) => product.productId === paramId);
-
-  console.log("request =>", request);
 
   const { error } = schema.validate(request.body);
 
