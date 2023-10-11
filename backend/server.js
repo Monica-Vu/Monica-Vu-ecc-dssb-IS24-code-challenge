@@ -71,7 +71,7 @@ app.get("/api/health", (request, response) => {
 });
 
 app.get("/api/products", (request, response) => {
-  response.status(200).json(json(products).flat());
+  response.status(200).json(products)
 });
 
 app.get("/api/products/:id", (request, response) => {
