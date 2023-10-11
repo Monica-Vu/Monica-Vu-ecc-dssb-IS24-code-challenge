@@ -43,7 +43,7 @@ const products = [
   },
   {
     productId: 3,
-    productName: "Trouble",
+    productName: "Even More",
     productOwnerName: "Keita Terazono",
     developers: [
       "Park Hanbin",
