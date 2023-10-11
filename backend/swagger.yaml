@@ -60,7 +60,7 @@ paths:
                   developers: ["Robin Banks", "Anita Bath", Paige Turner]
                   scrumMasterName: "Barry Cade"
                   methodology: "Waterfall"
-                  location: "github.com/bcgov/024"
+                  location: "github.com/bcgov/24"
       responses: 
         '201':    
           description: Product successfully created
@@ -81,9 +81,32 @@ paths:
             format: int64
       responses:
         '200':    
-          description: Product with given Id was found
+          description: Product with given ID was found
         '404': 
-          description: Product with given Id was not found
+          description: Product with given ID was not found
+    put:
+      tags: 
+        - ECC Ministry Products
+      summary: Update product information
+      parameters:
+        - name: id 
+          in: path
+          description: Product ID that you want to edit information
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Update an existing product in the table
+        content: 
+          application/json:  
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200':
+          description: Product successfully updated
+        '404': 
+          description: Product could not be updated
 
 components:
   schemas:
@@ -98,7 +121,7 @@ components:
           example: Test Product Owner
         developers: 
           type: array
-          example: [dev1, dev2]
+          example: [dev1, dev2, dev3, dev4, dev]
         scrumMasterName:
           type: string 
           example: Test Scrum Master Name
@@ -108,16 +131,14 @@ components:
         startDate:
           type: string
           example: 2023/09/05
+        location:
+          type: string
+          example: 'github/bcgov/test-name'
       required:
         - productName
         - productOwnerName
         - developers
         - scrumMasterName
         - methodology
-  requestBodies:
-    Product:
-      description: Product owner
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Product'
+
+          
