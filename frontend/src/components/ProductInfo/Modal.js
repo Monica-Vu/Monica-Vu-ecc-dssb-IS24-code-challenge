@@ -6,6 +6,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import UserContext from "../UserContext/UserContext";
 import { Controller } from "react-hook-form";
+import "./Style.css";
 
 function ProductModal({
   show,
@@ -44,7 +45,7 @@ function ProductModal({
               className="form-control"
               {...register("productName", { required: true })}
             />
-            {errors.productName && <span>Product name is required</span>}
+            {errors.productName && <span className="red-text">Product name is required</span>}
           </div>
           <div className="mb-3">
             <label htmlFor="product-owner-name" className="form-label">
@@ -55,7 +56,7 @@ function ProductModal({
               {...register("productOwnerName", { required: true })}
             />
             {errors.productOwnerName && (
-              <span>Product owner name is required</span>
+              <span className="red-text">Product owner name is required</span>
             )}
           </div>
 
@@ -65,16 +66,15 @@ function ProductModal({
             </label>
             <br />
             <small id="developersHelp" className="form-text text-muted">
-              {" "}
-              Please seperate each developer name by comma. Make sure to not
-              have a comma at the end or there will be an error.{" "}
+              Please enter between one to five developer names. Seperate each developer name by comma. Make sure to not
+              have a comma at the end or there will be an error.
             </small>
             <textarea
               className="form-control"
               {...register("developers", { required: true })}
               rows="2"
             ></textarea>
-            {errors.developers && <span>Developers field is required</span>}
+            {errors.developers && <span className="red-text">Developers field is required</span>}
           </div>
           <div className="mb-3">
             <label htmlFor="scrum-master-name" className="form-label">
@@ -85,7 +85,7 @@ function ProductModal({
               {...register("scrumMasterName", { required: true })}
             />
             {errors.scrumMasterName && (
-              <span>Scrum master name is required</span>
+              <span className="red-text">Scrum master name is required</span>
             )}
           </div>
           {selectedUser === "Lisa" && (
@@ -105,7 +105,7 @@ function ProductModal({
                 )}
               />
               {errors.startDate && (
-                <span>
+                <span className="red-text">
                   <br /> Please select a start date
                 </span>
               )}
@@ -132,7 +132,7 @@ function ProductModal({
                 className="form-control"
                 {...register("location", { required: true })}
               />
-              {errors.location && <span>Location is required</span>}
+              {errors.location && <span className="red-text">Location is required</span>}
             </div>
           )}
         </Modal.Body>

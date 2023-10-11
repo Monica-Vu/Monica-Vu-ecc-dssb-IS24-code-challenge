@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ProductContext from "../ProductContext/ProductContext";
 import UserContext from "../UserContext/UserContext";
 import Button from "react-bootstrap/esm/Button";
@@ -19,7 +19,6 @@ const Table = ({ handleShow, setMode, reset }) => {
     setSearchTerm("")
     setDisplayedProducts(data || []);
   }, [selectedUser])
-
 
   const filterForLisa = () => {
     return data.filter(
@@ -44,8 +43,9 @@ const Table = ({ handleShow, setMode, reset }) => {
 
   return (
     <div>
+      {selectedUser === "Lisa"? <h4> Search By Scrum Master Name </h4> : <h4> Search By Developer Name </h4>}
       <div className="row no-gutters">
-        <div class="col-6">
+        <div className="col-6">
           <input
             className="form-control"
             value={searchTerm}
@@ -57,7 +57,7 @@ const Table = ({ handleShow, setMode, reset }) => {
             }}
           />
         </div>
-        <div class="col-sm-auto">
+        <div className="col-sm-auto">
           <Button variant="primary" onClick={onSearchClick}>
             Search
           </Button>
