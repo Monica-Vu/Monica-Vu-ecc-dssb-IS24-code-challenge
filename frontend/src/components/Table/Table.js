@@ -7,27 +7,20 @@ import CustomButton from "../Button";
 const Table = ({ handleShow, setMode, reset }) => {
   const { data } = React.useContext(ProductContext);
   const { selectedUser } = React.useContext(UserContext);
-  const [productCount, setProductCount] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
-  const [displayedProducts, setDisplayedProducts] = useState(data);
-
-  const tableRef = useRef(null);
+  const [displayedProducts, setDisplayedProducts] = useState(data || []);
 
   useEffect(() => {
-    const table = tableRef.current;
-
-    if (table) {
-      const numProducts = table.querySelectorAll("tr");
-      setProductCount(numProducts.length - 1);
-    }
-  });
-
-  useEffect(() => {
-    setDisplayedProducts(data);
+    setDisplayedProducts(data || []);
     setSearchTerm("")
   }, [data])
 
-  // Create a function maybe called filterForLisa that filters products based on Lisa's criteria
+  useEffect(() => {
+    setSearchTerm("")
+    setDisplayedProducts(data || []);
+  }, [selectedUser])
+
+
   const filterForLisa = () => {
     return data.filter(
       (product) =>
@@ -73,9 +66,9 @@ const Table = ({ handleShow, setMode, reset }) => {
       {data ? (
         <div>
           <p>
-            <b> Number of Products: </b> {productCount}
+            <b> Number of Products: </b> {displayedProducts.length}
           </p>
-          <table ref={tableRef} className="table table-bordered table-striped">
+          <table className="table table-bordered table-striped">
             <thead>
               <tr>
                 <th> Product Id </th>
