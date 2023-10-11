@@ -59,10 +59,8 @@ const schema = Joi.object({
   location: Joi.string().allow('')
 }).options({ abortEarly: false });
 
-// TODO: might need to set it to 0
 let currentProductId = 34;
 
-// TODO: maybe delete
 app.get("/api", (request, response) => {
   response.status(200).send("OK");
 });
@@ -73,7 +71,7 @@ app.get("/api/health", (request, response) => {
 });
 
 app.get("/api/products", (request, response) => {
-  response.status(200).json(products);
+  response.status(200).json(json(products).flat());
 });
 
 app.get("/api/products/:id", (request, response) => {
@@ -103,7 +101,7 @@ app.post("/api/products", (request, response) => {
     productId: currentProductId,
     productName: request.body.productName,
     productOwnerName: request.body.productOwnerName,
-    developers: request.body.developers,
+    developers: request.body.developers.map(String),
     scrumMasterName: request.body.scrumMasterName,
     startDate: request.body.startDate,
     methodology: request.body.methodology,

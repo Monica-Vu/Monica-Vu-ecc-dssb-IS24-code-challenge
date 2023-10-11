@@ -27,7 +27,9 @@ npm run build
 npm run serve 
 ```
 
-In the terminal, it should specify the local address. If not, it is http://localhost:3001.
+In the terminal, it should specify the local address. If not, it is most likely http://localhost:3001.
+
+If you want to make changes to the application and see these changes locally, then you may run `npm run start:dev` instead of `npm run serve`
 
 ## Swagger Docs
 After running the backend, visit: http://localhost:3000/api-docs/
