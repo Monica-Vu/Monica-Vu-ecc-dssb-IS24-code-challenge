@@ -29,10 +29,26 @@ npm run serve
 
 In the terminal, it should specify the local address. If not, it is most likely http://localhost:3001.
 
-If you want to make changes to the application and see these changes locally, then you may run `npm run start:dev` instead of `npm run serve`
+If you want to make changes to the frontend application and see these changes locally immediately, then you may run `npm run start:dev` instead of `npm run serve`. Otherwise, you have run `npm run build`
 
 ## Swagger Docs
 After running the backend, visit: http://localhost:3000/api-docs/
+
+## Assumptions
+* Lisa can only add the following product information:
+    * Product Name
+    * Product Owner Name
+    * Developer(s)
+    * Scrum Master Name
+    * Start Date
+    * Methodology
+* Alan can either add or edit the following product information:
+    * Product Name
+    * Product Owner Name
+    * Developer(s)
+    * Scrum Master Name
+    * Methodology
+    * Location
 
 ## Technologies
 * React

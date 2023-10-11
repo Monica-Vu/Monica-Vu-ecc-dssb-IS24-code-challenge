@@ -44,6 +44,11 @@ const Table = ({ handleShow, setMode, reset }) => {
   return (
     <div>
       {selectedUser === "Lisa"? <h4> Search By Scrum Master Name </h4> : <h4> Search By Developer Name </h4>}
+      <p> 
+      Please enter their full name. The search is not case sensitive.
+      For example, if you want to search for the name "Ella Bond", you need to type "Ella Bond" and not just "Ella" or "Bond." 
+      However, typing "ella bond" is the same thing as "Ella Bond."
+      </p>
       <div className="row no-gutters">
         <div className="col-6">
           <input

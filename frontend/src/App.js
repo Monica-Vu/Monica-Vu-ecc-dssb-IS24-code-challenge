@@ -38,7 +38,7 @@ function App() {
           <option value="Lisa">Lisa</option>
           <option value="Alan">Alan</option>
         </select>
-        <h1> Ministry of Government Applications </h1>
+        <h1> Ministry of Education and Child Care Applications </h1>
         <Parent />
       </div>
     </ProductContext.Provider>
