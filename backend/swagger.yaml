@@ -44,6 +44,23 @@ paths:
           application/json:
             schema: 
               $ref: '#/components/schemas/Product'
+            examples:
+              Lisa:
+                value: 
+                  productName: "Sample Product Name One"
+                  productOwnerName: "Dee Sember"
+                  developers: ["Robin Banks", "Anita Bath"]
+                  scrumMasterName: "Sue Flay"
+                  methodology: "Agile"
+                  startDate: "2023/10/13"
+              Alan:
+                value: 
+                  productName: "Sample Product Name Two"
+                  productOwnerName: "Bill Ding"
+                  developers: ["Robin Banks", "Anita Bath", Paige Turner]
+                  scrumMasterName: "Barry Cade"
+                  methodology: "Waterfall"
+                  location: "github.com/bcgov/024"
       responses: 
         '201':    
           description: Product successfully created
